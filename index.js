@@ -3,20 +3,20 @@ window.onload = function(){
         // return window.devicePixelRatio || 1;
         return 2;
     }
-    const loadingSize = 80;
-    const p = getDevicePixelRatio();
-    let canvas = document.getElementById('loading-canvas');
-    let ctx = canvas.getContext('2d');
+    var loadingSize = 80;
+    var p = getDevicePixelRatio();
+    var canvas = document.getElementById('loading-canvas');
+    var ctx = canvas.getContext('2d');
     canvas.style.width = loadingSize + "px";
     canvas.style.height = loadingSize + "px";
     canvas.width = loadingSize*p;
     canvas.height = loadingSize*p;
 
-    const lines = ["rgba(110, 195, 254, .7)",  
+    var lines = ["rgba(110, 195, 254, .7)",  
                    "rgba(165, 217, 252, .5)",  
                    "rgba(157, 192, 249, .2)"];  
-    let step = 0;  
-    let bubbleArray = [];
+    var step = 0;  
+    var bubbleArray = [];
 
     function newBubble() {
         var circle = new createCircle();
@@ -46,11 +46,11 @@ window.onload = function(){
         ctx.clearRect(0,0,canvas.width,canvas.height);  
         // wave
         step += 2;
-        for(let j = lines.length - 1; j >= 0; j--) {  
+        for(var j = lines.length - 1; j >= 0; j--) {  
             ctx.fillStyle = lines[j];  
-            let angle = (step+j*70)*Math.PI/180;  
-            let deltaHeight = Math.sin(angle) * (loadingSize/4);  
-            let deltaHeightRight = Math.cos(angle) * (loadingSize/4);
+            var angle = (step+j*70)*Math.PI/180;  
+            var deltaHeight = Math.sin(angle) * (loadingSize/4);  
+            var deltaHeightRight = Math.cos(angle) * (loadingSize/4);
             ctx.beginPath();  
             ctx.moveTo(0, canvas.height/2+deltaHeight);  
             ctx.bezierCurveTo(canvas.width/2, canvas.height/2+deltaHeight-(loadingSize/4), canvas.width/2, canvas.height/2+deltaHeightRight-(loadingSize/4), canvas.width, canvas.height/2+deltaHeightRight);  
@@ -61,8 +61,8 @@ window.onload = function(){
             ctx.fill();
         }  
         // bubble  
-        for (let i = 0; i < bubbleArray.length; i++) {
-            let ss = bubbleArray[i];
+        for (var i = 0; i < bubbleArray.length; i++) {
+            var ss = bubbleArray[i];
             ss.render(ctx);
             ss.update()
         }
